@@ -1,0 +1,11 @@
+{
+  "package_path": "com.lumi.hub",
+  "min_sdk_api_level": 10001,
+  "version_code": 1,
+  "entrance": {
+    "scene": {
+      "trigger_ids": [],
+      "action_ids": []
+    }
+  }
+}
