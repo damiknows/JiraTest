@@ -1,0 +1,34 @@
+米家iOS图片资源包配置说明
+1.插件使用说明 https://github.com/MiEcosystem/ios-remote-resource
+2.相关文件密码 keystorePassword 'lumistore-2015' keyAlias 'lumi'  keyPassword 'lumikey-2015' private.pem 私钥password(每次打包资源包时需要输入) lumikey-2015 developerId 840907289
+3.打包命令 python packagePluginAndSign com.lumiunited.Gateway.iosr /path/to/private.pem /path/to/public.cer 840907289 公钥和私钥路径请根据实际情况替换
+4.打包插件和相关文件
+/Users/lumi/Documents/Xiaomi/ImagePlugin/private.pem
+
+/Users/lumi/Documents/Xiaomi/ImagePlugin/public.cer
+
+
+//打包网关的资源包
+python packagePluginAndSign com.lumiunited.Gateway.iosr /Users/ayanami/Documents/ImagePlugin/lumi-iOS-ImagePlugin/private.pem /Users/ayanami/Documents/ImagePlugin/lumi-iOS-ImagePlugin/public.cer 840907289
+
+python packagePluginAndSign com.lumiunited.Gateway.iosr /Users/ayanami/Documents/MiHome_ImagePlugin_iOS/KeyStore/private.pem /Users/ayanami/Documents/MiHome_ImagePlugin_iOS/KeyStore/public.cer 840907289
+
+
+cp -r `find Images -iname *.png` ./xiaomi
+
+cp -r `find Airer -iname *.png` ./AirePlugin
+
+
+cp -r `find Resource -iname *.html` ./HtmlResource
+cp -r `find Resource -iname *.js` ./HtmlResource
+cp -r `find Resource -iname *.css` ./HtmlResource
+
+
+//打包晾衣机的资源包
+python packagePluginAndSign com.lumiunited.AqaraAirer.iosr /Users/ayanami/Documents/MiHome_ImagePlugin_iOS/KeyStore/private.pem /Users/ayanami/Documents/MiHome_ImagePlugin_iOS/KeyStore/public.cer 840907289
+
+
+//打包RN插件
+python packagePluginAndSign com.lumiunited.milock.ios /Users/ayanami/Documents/MiHome_ImagePlugin_iOS/KeyStore/private.pem /Users/ayanami/Documents/MiHome_ImagePlugin_iOS/KeyStore/public.cer 840907289
+
+5.原则：1，如果资源没有改动，发新版本可以重用之前的资源包，资源包不需要更新。2，假如资源包有改动，assetLevel加1，保证老版本不受影响。3，assetlevel不变，但是资源变，仅用来热更新资源，做运营或者修复用途。6.同 model，哪个包的 version 高，下哪个
